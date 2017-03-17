@@ -31,7 +31,7 @@ C2 = 1;
 
 contdisp = 0;       % contador de visualizacao do erro
 flagdisp = 100;     % dado de impressao do erro
-max_epoc = 200000;  % numero maximo de epocas
+max_epoc = 200;  % numero maximo de epocas
 fa = 0.005;         % fator de aprendizado
 
 for epoc = 1:max_epoc    % etapa de treinamento
@@ -121,8 +121,7 @@ xlabel('x1'); ylabel('y: "+" = Dados Originais; "." = Valores do treinamento');
 figure  
 
 for n=1:Np % teste da rede treinada
-  
-  Load vX1;
+    
   X1 = vX1(n);
   
   % processamento dos dados da camada escondida
