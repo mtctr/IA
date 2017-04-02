@@ -2,14 +2,14 @@ function [Y] = MLP(X)
 load pesos.mat;
 
 [p N] = size(X);
-bias = -1*ones(1,N);
+bias = -1;
 
-X = [bias;X];
+%Camada escondida 
+z = bias+Wx*X;
+Z = 1./(1+exp(-z));    
 
-%Camada escondida   
-Z = 1./(1+exp(-Wx*X));    
-
-%Camada de saída 
-Y = 1./(1+exp(-Wy*Z));
+%Camada de saída
+y = bias+Wy*Z;
+Y = 1./(1+exp(-y));
 
 end

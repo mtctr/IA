@@ -12,21 +12,23 @@ function treinamMLP(X,D,erroMax, maxEpoc, NN, fa, alpha)
 [Np N] = size(X);
 [m n1] = size(D);
 
-bias = -1*ones(1,N);
-Wx = rand(NN+1, Np+1); %Pesos da camada esconida
-Wy = rand(m,NN+1); %Pesos da camada de saída
-WxOld = zeros(NN+1, Np+1);
-WyOld = zeros(m, NN+1);
+bias = -1;
+Wx = rand(NN, Np); %Pesos da camada esconida
+Wy = rand(m,NN); %Pesos da camada de saída
+WxOld = zeros(NN, Np);
+WyOld = zeros(m, NN);
 
-X = [bias; X];
 
 for epoc = 1:maxEpoc    
-  
-    %Camada escondida   
-    Z = 1./(1+exp(-Wx*X));    
+    
+    
+    %Camada escondida
+    z = bias+Wx*X;
+    Z = 1./(1+exp(-z));    
        
-    %Camada de saída 
-    Y = 1./(1+exp(-Wy*Z));
+    %Camada de saída
+    y = bias+Wy*Z;
+    Y = 1./(1+exp(-y));
 
     %Cálculo do erro
     E = D - Y;
