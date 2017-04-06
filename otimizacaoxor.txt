@@ -1,0 +1,5 @@
+pesos ótimos XOR:
+
+alpha = 1e-3
+fa = .75
+NN = 40

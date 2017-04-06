@@ -18,22 +18,22 @@ Wy = rand(m,NN); %Pesos da camada de saída
 WxOld = zeros(NN, Np);
 WyOld = zeros(m, NN);
 
-
 for epoc = 1:maxEpoc    
     
     
     %Camada escondida
     z = bias+Wx*X;
-    Z = 1./(1+exp(-z));    
-       
+  	Z = 1./(1+exp(-z));   
+   
     %Camada de saída
     y = bias+Wy*Z;
     Y = 1./(1+exp(-y));
-
+    
+    
     %Cálculo do erro
     E = D - Y;
     MSE = mean(mean(E.^2));
-
+    MSETot(epoc) = MSE;
     %Testar se o erro está na faixa de tolerância
 
     if MSE< erroMax, break, end
@@ -43,20 +43,24 @@ for epoc = 1:maxEpoc
     % **Backpropagation**
     
     dY = Y.*(1-Y); %Derivada da função de ativação de saída
-    deltay = dY.*E;
+    deltay = dY.*E;   
     
     %Ajuste dos pesos da camada de saída
-    dWy = fa/N*deltay*(Z') + alpha*WyOld;
+    dWy = fa*deltay*(Z') + alpha*WyOld ;
     WyOld = Wy;
     Wy = Wy + dWy;
    
     %Ajuste dos pesos da camada escondida
-    dZ = Z.*(1-Z); %Derivada da função de ativação da cam. esc.
-    dWx = fa/N*(dZ.*(Wy'*deltay))*X' + alpha*WxOld;
+    dZ = Z.*(1-Z); %Derivada da função de ativação da cam. esc. 
+    deltax = dZ.*(Wy'*deltay); 
+    
+    dWx = fa*deltax*X' + alpha*WxOld;
     WxOld = Wx;
     Wx = Wx + dWx;
 
 end
 
+semilogy(MSETot);
 save ('pesos.mat','Wx','Wy');
+
 end
