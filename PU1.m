@@ -4,25 +4,25 @@ while(1)
     %Sonar direito
     sd = ReadSonar(obj,1);
     if(isempty(sd))
-        sd = 2;
+        sd = 1;
     end
     
     %Sonar frontal
     sf = ReadSonar(obj,2);
     if(isempty(sf))
-        sf = 2;
+        sf = 1;
     end
     
     %Sonar esquerdo
     se = ReadSonar(obj,3);
     if(isempty(se))
-        se = 2;
+        se = 1;
     end
     
     %Sonar traseiro
     st = ReadSonar(obj,4);
     if(isempty(st))
-        st = 2;
+        st = 1;
     end
     
     X = [sd;sf;se;st];

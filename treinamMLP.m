@@ -29,7 +29,6 @@ for epoc = 1:maxEpoc
     y = bias+Wy*Z;
     Y = 1./(1+exp(-y));
     
-    
     %Cálculo do erro
     E = D - Y;
     MSE = mean(mean(E.^2));
@@ -57,6 +56,8 @@ for epoc = 1:maxEpoc
     dWx = fa*deltax*X' + alpha*WxOld;
     WxOld = Wx;
     Wx = Wx + dWx;
+    
+    
 
 end
 

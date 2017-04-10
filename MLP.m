@@ -14,4 +14,5 @@ y = bias+Wy*Z;
 Y = 1./(1+exp(-y));
 
 
+
 end
