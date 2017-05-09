@@ -18,13 +18,8 @@ while(1)
     if(isempty(se))
         se = 1;
     end
-    
-    %Sonar traseiro
-    st = ReadSonar(obj,4);
-    if(isempty(st))
-        st = 1;
-    end
-    
+   
+ 
     X = [sd;sf;se;st];
     Y = MLP(X) - .5;
     
