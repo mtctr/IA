@@ -1,5 +1,7 @@
 function finalRad = PU2(obj)
 
+
+a = readfis('fuzzy.fis');
 while(1)
     %Sonar direito
     sd = ReadSonar(obj,1);
@@ -19,11 +21,11 @@ while(1)
         se = 3;
     end
    
-   a = readfis('fuzzy.fis');
+   
    w = evalfis([sf sd se],a);
    
    SetDriveWheelsCreate(obj,w(1),w(2));
     
-   pause(1);
+   pause(0.1);
     
 end
