@@ -1,6 +1,6 @@
 function finalRad = PU2(obj)
 
-
+%leitura do arquivo com o sistema fuzzy
 a = readfis('fuzzy.fis');
 while(1)
     %Sonar direito
@@ -21,9 +21,10 @@ while(1)
         se = 3;
     end
    
-   
+   %execuçao do sistema
    w = evalfis([sf sd se],a);
    
+   %movimentaçao do robo
    SetDriveWheelsCreate(obj,w(1),w(2));
 
    pause(0.1);
