@@ -26,8 +26,8 @@ while(1)
    x = org.jpl7.Query(c);
    r = x.allSolutions;
    w = r(1).values.toArray; 
-   rd = w(1).toString;
-   re = w(2).toString;
+   re = w(1).toString;
+   rd = w(2).toString;
    rd = str2double(rd);
    re = str2double(re);
    
