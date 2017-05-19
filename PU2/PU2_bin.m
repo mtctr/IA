@@ -1,7 +1,7 @@
 function finalRad = PU2_bin(HAL9000)
 
 %leitura das regras binarias
-x=org.jpl7.Query('consult(''C:/Users/Mateus/Desktop/IA/PU2/PU2.pl'')');
+x=org.jpl7.Query('consult(''PU2.pl'')');
 x.hasSolution;
 
 while(1)

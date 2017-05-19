@@ -1,16 +1,18 @@
-mp(X):-X >= 0, X < 0.5.
-perto(X):-X >= 0.5, X < 1.5.
+%regras base para a distancia dos sensores
+mp(X):-X >= 0, X < 0.5. %muito perto
+perto(X):-X >= 0.5, X < 1.5. 
 longe(X):-X >= 1.5, X =< 3.
 
+%regras base para a saída do sistema
 seguir(RD,RE):- RD is 0.5, RE is 0.5.
 seguirLento(RD,RE):- RD is 0.3, RE is 0.3.
 vd(RD,RE):- RD is 0.1, RE is 0.5.
 ve(RD,RE):- RD is 0.5, RE is 0.1.
 vpd(RD,RE):- RD is 0.2, RE is 0.3.
 vpe(RD,RE):- RD is 0.3, RE is 0.2.
-
 girar(RD,RE):- RD is 0.5, RE is -0.5.
 
+%regras de produção do sistema
 mov(SF, SD, SE, RD, RE):- longe(SF), longe(SD), longe(SE), seguir(RD,RE).
 mov(SF, SD, SE, RD, RE):- longe(SF), longe(SD), perto(SE), seguirLento(RD,RE).
 mov(SF, SD, SE, RD, RE):- longe(SF), longe(SD), mp(SE), vpd(RD,RE).

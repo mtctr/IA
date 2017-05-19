@@ -9,7 +9,7 @@ Z = zeros(n,m);
 
 for i=1:n
     for j=1:m
-        s = ['valor(X,' num2str(X(i,j)) ',' num2str(Y(i,j)) ').'];
+        s = ['mov(X,' num2str(X(i,j)) ',' num2str(Y(i,j)) ').'];
         x=org.jpl7.Query(s);
         a=x.allSolutions;
         Z(i,j)=str2double(a(1).values);
