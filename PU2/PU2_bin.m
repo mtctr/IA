@@ -1,4 +1,4 @@
-function finalRad = PU2_bin(obj)
+function finalRad = PU2_bin(HAL9000)
 
 %leitura das regras binarias
 x=org.jpl7.Query('consult(''C:/Users/Mateus/Desktop/IA/PU2/PU2.pl'')');
@@ -6,19 +6,19 @@ x.hasSolution;
 
 while(1)
     %Sonar direito
-    sd = ReadSonar(obj,1);
+    sd = ReadSonar(HAL9000,1);
     if(isempty(sd))
         sd = 3;
     end
     
     %Sonar frontal
-    sf = ReadSonar(obj,2);
+    sf = ReadSonar(HAL9000,2);
     if(isempty(sf))
         sf = 3;
     end
     
     %Sonar esquerdo
-    se = ReadSonar(obj,3);
+    se = ReadSonar(HAL9000,3);
     if(isempty(se))
         se = 3;
     end
@@ -36,8 +36,10 @@ while(1)
    re = str2double(re);
    
    %movimentaçao do robo
-   SetDriveWheelsCreate(obj,rd,re);
-    
-   pause(0.1);
+   SetDriveWheelsCreate(HAL9000,rd,re);
+   [x y] = OverheadLocalizationCreate(HAL9000);
+   plot(x,y,'.')
+       
+   pause(0.5);
     
 end

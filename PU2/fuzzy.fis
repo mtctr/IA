@@ -9,7 +9,7 @@ AndMethod='min'
 OrMethod='max'
 ImpMethod='min'
 AggMethod='sum'
-DefuzzMethod='centroid'
+DefuzzMethod='bisector'
 
 [Input1]
 Name='SF'

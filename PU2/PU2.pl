@@ -28,7 +28,7 @@ mov(SF, SD, SE, RD, RE):- perto(SF), perto(SD), perto(SE), ve(RD,RE).
 mov(SF, SD, SE, RD, RE):- perto(SF), perto(SD), mp(SE), vd(RD,RE).
 mov(SF, SD, SE, RD, RE):- perto(SF), mp(SD), longe(SE), ve(RD,RE).
 mov(SF, SD, SE, RD, RE):- perto(SF), mp(SD), perto(SE), ve(RD,RE).
-mov(SF, SD, SE, RD, RE):- perto(SF), mp(SD), mp(SE), girar(RD,RE).
+mov(SF, SD, SE, RD, RE):- perto(SF), mp(SD), mp(SE), ve(RD,RE).
 
 mov(SF, SD, SE, RD, RE):- mp(SF), longe(SD), longe(SE), vd(RD,RE).
 mov(SF, SD, SE, RD, RE):- mp(SF), longe(SD), perto(SE), vd(RD,RE).
@@ -38,4 +38,4 @@ mov(SF, SD, SE, RD, RE):- mp(SF), perto(SD), perto(SE), ve(RD,RE).
 mov(SF, SD, SE, RD, RE):- mp(SF), perto(SD), mp(SE), vd(RD,RE).
 mov(SF, SD, SE, RD, RE):- mp(SF), mp(SD), longe(SE), ve(RD,RE).
 mov(SF, SD, SE, RD, RE):- mp(SF), mp(SD), perto(SE), ve(RD,RE).
-mov(SF, SD, SE, RD, RE):- mp(SF), mp(SD), mp(SE),girar(RD,RE).
+mov(SF, SD, SE, RD, RE):- mp(SF), mp(SD), mp(SE),ve(RD,RE).

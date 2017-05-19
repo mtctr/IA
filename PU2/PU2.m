@@ -1,22 +1,22 @@
-function finalRad = PU2(obj)
+function finalRad = PU2(HAL9000)
 
 %leitura do arquivo com o sistema fuzzy
 a = readfis('fuzzy.fis');
 while(1)
     %Sonar direito
-    sd = ReadSonar(obj,1);
+    sd = ReadSonar(HAL9000,1);
     if(isempty(sd))
         sd = 3;
     end
     
     %Sonar frontal
-    sf = ReadSonar(obj,2);
+    sf = ReadSonar(HAL9000,2);
     if(isempty(sf))
         sf = 3;
     end
     
     %Sonar esquerdo
-    se = ReadSonar(obj,3);
+    se = ReadSonar(HAL9000,3);
     if(isempty(se))
         se = 3;
     end
@@ -25,8 +25,11 @@ while(1)
    w = evalfis([sf sd se],a);
    
    %movimentaçao do robo
-   SetDriveWheelsCreate(obj,w(1),w(2));
-
-   pause(0.1);
+   SetDriveWheelsCreate(HAL9000,w(1),w(2));
+   
+   %mostrar por onde o robo andou
+   [x y] = OverheadLocalizationCreate(HAL9000);
+   plot(x,y,'.')
+   pause(0.3);
     
 end
