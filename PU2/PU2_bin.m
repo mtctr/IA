@@ -37,9 +37,10 @@ while(1)
    
    %movimentaçao do robo
    SetDriveWheelsCreate(HAL9000,rd,re);
+   %mostrar por onde o robo andou
    [x y] = OverheadLocalizationCreate(HAL9000);
    plot(x,y,'.')
        
-   pause(0.5);
+   pause(0.3);
     
 end
