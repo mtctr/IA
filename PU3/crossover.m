@@ -1,9 +1,3 @@
-function crossover(chromo, crossrate)
-s = size(chromo)
-cross = randi(s)
-if(rand()< crossrate)
-    for i = cross:s
-        swap(chromo[i]);
-    end
-end
+function y = crossover(pop, p1,p2)
+y = (pop(p1,:)+pop(p2,:))/2;
 end
