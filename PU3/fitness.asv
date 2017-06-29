@@ -1,0 +1,35 @@
+%{
+%calculo da aptidao usando distancia euclidiana
+function fit = fitness(pop, posx, posy, mainGoal)
+fit = sqrt((mainGoal(1) - pop).^2+(mainGoal(2)-pop).^2);
+fit = [flip(fit(:,1)) flip(fit(:,2))];
+end
+%}
+
+function fit = fitness(pop, px, py,goal,sonars,th)
+    %distancia euclidiana até o objetivo    
+    fit = sqrt((goal(1)-pop(:,1)).^2+(goal(2)-pop(:,2)).^2);
+    s = max(sonars);
+     
+    d = sqrt((px + sonars(s))^2 + (py+sonars(s)^2);
+    
+        
+    
+    %{
+    if (s == 1)
+        mpoint = [px+sonars(s)*cos(th+pi/2) py+sonars(s)*sin(th+pi/2)];
+        dist = sqrt((mpoint(1)-pop(:,1)).^2+(mpoint(2)-pop(:,2)).^2);
+    end
+    if (s == 2)
+        mpoint = [px+sonars(s)*cos(th) py+sonars(s)*sin(th)];
+        dist = sqrt((mpoint(1)-pop(:,1)).^2+(mpoint(2)-pop(:,2)).^2);
+    end
+    if (s == 3)
+        mpoint = [px+sonars(s)*cos(th-pi/2) py+sonars(s)*sin(th-pi/2)];
+        dist = sqrt((mpoint(1)-pop(:,1)).^2+(mpoint(2)-pop(:,2)).^2);
+    end
+    %}
+    
+   
+end
+

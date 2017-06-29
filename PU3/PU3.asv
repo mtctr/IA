@@ -1,6 +1,6 @@
 function finalRad = PU3(HAL9000)
 
-mainGoal = [4.000 3.000];
+mainGoal = [3.000 3.000];
 
 
 while(1)
@@ -24,45 +24,42 @@ while(1)
     [x y th] = OverheadLocalizationCreate(HAL9000);
     plot(x,y,'*')    
     
-    secGoal = GA(x, y, mainGoal, SONARS);
+    secGoal = GA(x, y, mainGoal, SONARS, th);
     
     
     dy = secGoal(2)-y;
     dx = secGoal(1)-x;
     tang = dy/dx;
-    d = sqrt((dx)^2+(dy)^2);
     
     
-    if d > 0.5
+    if sqrt((dx)^2+(dy)^2) > 0.5
         plot(secGoal(1),secGoal(2),'r.');
-        d = 0.3;
+        
         if atan(tang) > 0 && dy>= 0            
             rot = th - atan(tang);
             HAL9000.turnAngle(0.2, -rot*180/pi);
-            HAL9000.travelDist(0.5,d);
+            HAL9000.travelDist(0.5,0.5);
             
         elseif atan(tang) < 0 && (dy) >= 0            
             rot = 3.14 + atan(tang) - th;
             HAL9000.turnAngle(0.2, rot*180/pi);
-            HAL9000.travelDist(0.5,d);
+            HAL9000.travelDist(0.5,0.5);
             
         elseif atan(tang) > 0 && (dy) < 0        
             rot = -3.14 - th + atan(tang);
             HAL9000.turnAngle(0.2, +rot*180/pi);
-            HAL9000.travelDist(0.5,d);
+            HAL9000.travelDist(0.5,0.5);
             
         elseif atan(tang) < 0 && (dy) < 0            
             rot = th - atan(tang);
             HAL9000.turnAngle(0.2, -rot*180/pi);
-            HAL9000.travelDist(0.5,d);
+            HAL9000.travelDist(0.5,0.5);
             
         end
     
-    end    
-   
-    if sqrt((mainGoal(1)- x)^2+(mainGoal(2)- y)^2)< 1
-        break
     end
+    
+    if(sqrt((mainGoal(1)-secGoal(1))^2+(dy)^2)< 0.5
     pause(0.1);
  
         
